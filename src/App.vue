@@ -7,19 +7,13 @@ const tmdbKey: string = import.meta.env.VITE_TMDB_APIKEY_V3 as string
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+    <h1>spitfilm</h1>
+    <form>
+      <label>Choose a genre</label>
+      <select name="genre" id="genre"></select>
+    </form>
+    <button>Spit a Film!</button>
   </header>
-
-  <RouterView />
 </template>
 
 <style scoped>
