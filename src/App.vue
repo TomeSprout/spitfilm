@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
 const tmdbKey: string = import.meta.env.VITE_TMDB_APIKEY_V3 as string
+const tmdbBaseUrl = 'https://api.themoviedb.org/3'
 const genreReqEndpoint = '/genre/movie/list'
 </script>
 
