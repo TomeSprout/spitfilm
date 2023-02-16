@@ -8,6 +8,7 @@ const tmdbBaseUrl = 'https://api.themoviedb.org/3'
 const getGenres = () => {
   const genreReqEndpoint = '/genre/movie/list'
   const requestParams = `?=api_key:${tmdbKey}`
+  const urlToFetch = tmdbBaseUrl + genreReqEndpoint + requestParams
 }
 </script>
 
