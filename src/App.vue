@@ -1,23 +1,38 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+
+const tmdbKey: string = import.meta.env.VITE_TMDB_APIKEY_V3 as string
+const tmdbBaseUrl = 'https://api.themoviedb.org/3'
+
+const getGenres = async (): Promise<void> => {
+  const genreReqEndpoint = '/genre/movie/list'
+  const requestParams = `?=api_key:${tmdbKey}`
+  const urlToFetch = tmdbBaseUrl + genreReqEndpoint + requestParams
+
+  try {
+    const response = await fetch(urlToFetch, { method: 'GET' })
+
+    if (!response.ok) {
+      return
+    }
+
+    const jsonResponse = await response.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+    <h1>spitfilm</h1>
+    <form>
+      <label>Choose a genre</label>
+      <select name="genre" id="genre"></select>
+    </form>
+    <button>Spit a Film!</button>
   </header>
-
-  <RouterView />
 </template>
 
 <style scoped>
