@@ -11,7 +11,11 @@ const getGenres = async (): Promise<void> => {
   const urlToFetch = tmdbBaseUrl + genreReqEndpoint + requestParams
 
   try {
-    const response = await fetch(urlToFetch, { method: 'GET'})
+    const response = await fetch(urlToFetch, { method: 'GET' })
+
+    if (!response.ok) {
+      return
+    }
   } catch (error) {
     console.log(error)
   }
