@@ -5,10 +5,16 @@ import HelloWorld from './components/HelloWorld.vue'
 const tmdbKey: string = import.meta.env.VITE_TMDB_APIKEY_V3 as string
 const tmdbBaseUrl = 'https://api.themoviedb.org/3'
 
-const getGenres = () => {
+const getGenres = async (): Promise<void> => {
   const genreReqEndpoint = '/genre/movie/list'
   const requestParams = `?=api_key:${tmdbKey}`
   const urlToFetch = tmdbBaseUrl + genreReqEndpoint + requestParams
+
+  try {
+    const response = await fetch(urlToFetch, { method: 'GET'})
+  } catch (error) {
+    console.log(error)
+  }
 }
 </script>
 
